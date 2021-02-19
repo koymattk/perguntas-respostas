@@ -27,9 +27,10 @@ app.get('/perguntar', (req,res)=> {
 });
 
 app.post('/salvarpergunta', (req,res) => {
-    const {title, description} = req.body;
-    console.log(title, description);
-    res.send('formulario recebido');
+    perguntaModel.create(req.body)
+        .then(()=> {
+            res.redirect('/')
+        })
 });
 
 app.listen(5000, ()=> {
