@@ -52,6 +52,15 @@ app.get('/pergunta/:id', (req,res)=> {
     })
 });
 
+app.post('/responder/:perguntaID', (req,res)=> {
+    const {perguntaID} = req.params;
+    const corpo = req.body.corpo
+    Resposta.create({perguntaID,corpo})
+    .then(()=>{
+        res.redirect(`/pergunta/${perguntaID}`)
+    });
+})
+
 app.listen(5000, ()=> {
     console.log("running on port: 5000");
 });

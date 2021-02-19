@@ -7,7 +7,7 @@
         <h1><%= pergunta.title %></h1>
         <p><%= pergunta.description %></p>
         <hr>
-        <form action="" method="POST">
+        <form action="/responder/<%= pergunta.id %>" method="POST">
             <h3>Responda</h3>
             <label for="">Resposta</label>
             <textarea name="corpo" id="" cols="30" rows="10" class="form-control" placeholder="Digite sua reposta"></textarea>
