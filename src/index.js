@@ -3,6 +3,7 @@ const app = express();
 const connection = require('./models/database/database');
 const Pergunta = require("./models/Pergunta");
 const perguntaModel = require('./models/Pergunta');
+const Resposta = require('./models/Resposta');
 
 connection
     .authenticate()
