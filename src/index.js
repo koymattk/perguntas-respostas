@@ -37,6 +37,18 @@ app.post('/salvarpergunta', (req,res) => {
             res.redirect('/')
         })
 });
+app.get('/pergunta/:id', (req,res)=> {
+    const { id } = req.params
+    perguntaModel.findOne({
+        where:{id}
+    }).then(pergunta => {
+        if(pergunta != undefined){
+            res.render('pergunta')
+        }else{
+            res.redirect('/')
+        }
+    })
+});
 
 app.listen(5000, ()=> {
     console.log("running on port: 5000");
