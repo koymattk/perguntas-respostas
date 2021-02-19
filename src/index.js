@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const connection = require('./models/database/database');
+const Pergunta = require("./models/Pergunta");
 const perguntaModel = require('./models/Pergunta');
 
 connection
@@ -43,7 +44,7 @@ app.get('/pergunta/:id', (req,res)=> {
         where:{id}
     }).then(pergunta => {
         if(pergunta != undefined){
-            res.render('pergunta')
+            res.render('pergunta', {pergunta})
         }else{
             res.redirect('/')
         }
