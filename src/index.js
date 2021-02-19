@@ -19,7 +19,10 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 app.get('/', (req,res)=>{
-    res.render('index')
+    perguntaModel.findAll({raw:true}).then(perguntas => {
+        console.log(perguntas)
+    });
+    res.render('index');
 });
 
 app.get('/perguntar', (req,res)=> {
