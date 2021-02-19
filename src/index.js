@@ -19,7 +19,9 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 app.get('/', (req,res)=>{
-    perguntaModel.findAll({raw:true}).then(perguntas => {
+    perguntaModel.findAll({raw:true, order:[
+        ['id','DESC']
+    ]}).then(perguntas => {
         res.render('index', {perguntas});
         console.log(perguntas)
     });
