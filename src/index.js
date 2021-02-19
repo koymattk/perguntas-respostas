@@ -45,7 +45,14 @@ app.get('/pergunta/:id', (req,res)=> {
         where:{id}
     }).then(pergunta => {
         if(pergunta != undefined){
-            res.render('pergunta', {pergunta})
+            Resposta.findAll({order:[
+                ['createdAt','DESC']
+            ],
+                where: {perguntaID: pergunta.id}
+            }).then(resp =>{
+                res.render('pergunta', {pergunta, resp})
+            })
+            
         }else{
             res.redirect('/')
         }
@@ -55,10 +62,17 @@ app.get('/pergunta/:id', (req,res)=> {
 app.post('/responder/:perguntaID', (req,res)=> {
     const {perguntaID} = req.params;
     const corpo = req.body.corpo
-    Resposta.create({perguntaID,corpo})
+    console.log(corpo)
+    if (corpo !== '') {
+        Resposta.create({perguntaID,corpo})
     .then(()=>{
         res.redirect(`/pergunta/${perguntaID}`)
     });
+
+    }else{
+        res.redirect(`/pergunta/${perguntaID}`)
+    }
+    
 })
 
 app.listen(5000, ()=> {

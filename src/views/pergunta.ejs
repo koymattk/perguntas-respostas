@@ -10,10 +10,19 @@
         <form action="/responder/<%= pergunta.id %>" method="POST">
             <h3>Responda</h3>
             <label for="">Resposta</label>
-            <textarea name="corpo" id="" cols="30" rows="10" class="form-control" placeholder="Digite sua reposta"></textarea>
+            <textarea name="corpo" id=""  class="form-control" placeholder="Digite sua reposta"></textarea>
             <br>
             <button class="btn btn-primary">Resposnder</button>
         </form>
+        <% resp.forEach(resp =>{ %>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <p><%=resp.corpo%></p>
+                </div>
+            </div>
+            
+        <% }) %>
     </div>
 </body>
 <%- include ('./partials/footer.ejs') %>
