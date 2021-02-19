@@ -20,9 +20,9 @@ app.use(express.json());
 
 app.get('/', (req,res)=>{
     perguntaModel.findAll({raw:true}).then(perguntas => {
+        res.render('index', {perguntas});
         console.log(perguntas)
     });
-    res.render('index');
 });
 
 app.get('/perguntar', (req,res)=> {
