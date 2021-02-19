@@ -1,6 +1,15 @@
 const express = require("express");
-
 const app = express();
+const connection = require('./database/database');
+
+connection
+    .authenticate()
+    .then(() => {
+        console.log("conexão com o banco de feita com sucesso")
+    })
+    .catch(error => {
+        console.log(error)
+    })
 
 app.set('views', './src/views');
 app.set('view engine', 'ejs');

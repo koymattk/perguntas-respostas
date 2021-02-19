@@ -10,6 +10,6 @@ const connection = new Sequelize(
         host:process.env.DATABASE_HOST,
         dialect:'mysql'
     }
-    );
+);
 
-    module.exports = connection;
+module.exports = connection;
