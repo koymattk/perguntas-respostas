@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const connection = require('./database/database');
+const connection = require('./models/database/database');
+const perguntaModel = require('./models/Pergunta');
 
 connection
     .authenticate()
